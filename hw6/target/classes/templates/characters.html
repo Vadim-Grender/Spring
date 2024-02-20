@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rick and Morty Characters</title>
+</head>
+<body>
+<div class="container">
+    <h1>Rick and Morty Characters</h1>
+    <div th:each="character : ${characters}" class="character-card">
+        <a th:href="@{'/' + ${character.id}}">
+            <img th:src="${character.image}" alt="Character Image" class="character-image">
+        </a>
+        <div class="character-details">
+            <a th:href="@{/{id}(id=${character.id})}"><p><label>Name:</label> <span
+                    th:text="${character.name}"></span></p></a>
+            <p><label>Status:</label> <span th:text="${character.status}"></span></p>
+            <p><label>Species:</label> <span th:text="${character.species}"></span></p>
+            <p><label>Type:</label> <span th:text="${character.type}"></span></p>
+            <p><label>Gender:</label> <span th:text="${character.gender}"></span></p>
+            <p><label>Created:</label> <span th:text="${character.created}"></span></p>
+        </div>
+    </div>
+    <div>
+        <a th:href="@{/prev}" class="previous round">&#8249;</a>
+        <a th:href="@{/next}" class="next round">&#8250;</a>
+    </div>
+</div>
+</body>
+</html>
