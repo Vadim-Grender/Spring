@@ -1,0 +1,14 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: api-gateway
+routes:
+  - id: task-server
+    uri: http://localhost:8081/
+    predicates:
+       - Path=/task/**
+  - id: user-server
+    uri: http://localhost:8084/
+    predicates:
+      - Path=/user/**
